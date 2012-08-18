@@ -1,0 +1,33 @@
+﻿@using Microsoft.Web.Mvc
+@using UIT.iDeal.Common.Web
+@using UIT.iDeal.Web.Controllers
+@model UIT.iDeal.ViewModel.Tasks.AddTaskForm
+
+@{
+    ViewBag.Title = "Add a new Task";
+}
+
+@section PageIdentifier
+{
+   @Html.SetUpPageIdWith(LocalSiteMap.Navigation.PageIds.Tasks.Create);
+}
+
+
+<h2>Add a new Task</h2>
+
+
+@using (Html.BeginForm()) {
+
+    @Html.ValidationSummary(true)
+    <fieldset>
+        @Html.EditorForModel()
+
+        <p>
+            <input type="submit" id="@LocalSiteMap.Locators.ActionElementIds.AddTask.SaveButton" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @(Html.ActionLink<TasksController>(x => x.Index(), "Back to Task list"))
+</div>
